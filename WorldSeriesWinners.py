@@ -1,6 +1,6 @@
 WS = open("WorldSeriesWinners.txt", "r")
 WS1 = open("WorldSeriesWinners.txt", "r")
-
+WS2 = open("WorldSeriesWinners.txt", "r")
 teamnum = {}
 yearteam = {}
 result = 0
@@ -25,7 +25,6 @@ for y in WS1:
         year += 1
         yearteam[year] = y
 print(teamnum)
-print(teamnum[team])
 print(yearteam)
 
 user_year = int(input("What year do you want to know the World Series winner of? "))
@@ -35,12 +34,21 @@ if user_year == 1904 or user_year == 1994:
 
 else:
     y = user_year
+    for winnum in WS2:
+        winnum = winnum.strip()
+        if winnum == yearteam[y]:
+            if winnum in teamnum:
+                teamnum[team] += 1
+            else:
+                teamnum[team] = 1
+
+    winnum = teamnum[team] - 2
     print(
         "The team that won in "
         + str(y)
         + " was "
         + str(yearteam[y])
         + ". They have "
-        + str(teamnum[team])
+        + str(winnum)
         + " total wins."
     )
