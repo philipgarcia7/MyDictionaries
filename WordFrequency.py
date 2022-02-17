@@ -1,7 +1,10 @@
 AI = open("AI.txt", "r")
 word_count = 0
 word_dict = {}
-special_characters = '"', '"', ",", ".", "-", "'", "@", "!"
+import string
+
+removetable = str.maketrans("", "", string.punctuation)
+AI = [s.translate(removetable) for s in AI]
 for word in AI:
     for w in word.split():
         w = w.lower()
